@@ -1,0 +1,11 @@
+$temp: center;
+$my_color: #52e491;
+.textCenter {
+  text-align: $temp;
+}
+.bright {
+  color: $my_color;
+}
+.something {
+  max-width: unset;
+}
