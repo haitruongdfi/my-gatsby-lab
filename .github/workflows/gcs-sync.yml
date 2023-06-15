@@ -14,6 +14,8 @@ jobs:
 
     env:
       API_KEY: whatIsUsedFor
+      CONTENTFUL_SPACE_ID: ibdeygql9ywh
+      CONTENTFUL_DELIVERY_API_ACCESS_TOKEN: 3HkJYNsVrDL90Q20Ak7HmIWtK1WLPsoT0qbtUw526n8
     strategy:
       matrix:
         node-version: [18]
