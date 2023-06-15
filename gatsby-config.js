@@ -70,13 +70,6 @@ module.exports = {
                 apis: [{ endpoint: 'news' },]
             }
         },
-        {
-            resolve: "gatsby-source-wordpress",
-            options: {
 
-                url: "http://localhost:8080/graphql",
-                verbose: true,
-            },
-        },
     ],
 }
