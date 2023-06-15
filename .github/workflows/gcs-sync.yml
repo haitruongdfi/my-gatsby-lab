@@ -1,0 +1,42 @@
+name: gcs-sync
+
+on:
+  push:
+    branches:
+      - master
+  repository_dispatch:
+    types: []
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      API_KEY: whatIsUsedFor
+    strategy:
+      matrix:
+        node-version: [16.15.1]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+
+      - id: 'google-auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - id: "upload-folder"
+        uses: "google-github-actions/upload-cloud-storage@v0"
+        with:
+          path: "public"
+          destination: ${{ secrets.GCP_STORAGE_BUCKET }}
+          parent: false
+          headers: |-
+            cache-control: no-cache
