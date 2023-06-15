@@ -16,7 +16,7 @@ jobs:
       API_KEY: whatIsUsedFor
     strategy:
       matrix:
-        node-version: [16.15.1]
+        node-version: [18]
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
