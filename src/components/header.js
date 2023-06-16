@@ -30,7 +30,7 @@ function Header({ siteTitle }) {
         }}
       >
         {siteTitle}
-        &nbsp;produced by&nbsp;
+        &nbsp;is created by&nbsp;
         {data.site.siteMetadata.author}
       </Link>
       <img
